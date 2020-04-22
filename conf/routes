@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /api-docs                                controllers.ApiHelpController.getResources
+
+# Benefits
+GET     /benefitsPrograms/v1/benefits/:rallyId          controllers.BenefitController.getBenefitsForUser(rallyId: String)
+GET     /benefitsPrograms/v1/ccfBenefits/:rallyId       controllers.BenefitController.getCcfBenefitsForUser(rallyId: String)
+POST    /benefitsPrograms/v1/benefits/:rallyId          controllers.BenefitController.registerUser(rallyId: String)
+
+# Programs
+GET     /benefitsPrograms/v1/programs/:rallyId          controllers.ProgramController.getProgramsForUser(rallyId: String)

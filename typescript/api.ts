@@ -216,6 +216,43 @@ export interface UserBenefitsResponse {
      */
     demographics?: Demographics;
 }
+/**
+ * 
+ * @export
+ * @interface UserRegistrationRequest
+ */
+export interface UserRegistrationRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRegistrationRequest
+     */
+    internalPlanId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRegistrationRequest
+     */
+    firstName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRegistrationRequest
+     */
+    lastName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRegistrationRequest
+     */
+    dob?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRegistrationRequest
+     */
+    memberId?: string;
+}
 
 /**
  * BenefitApi - axios parameter creator
@@ -299,11 +336,11 @@ export const BenefitApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Register user for a medical plan
          * @param {string} rallyId 
-         * @param {string} body JSON body describing benefit
+         * @param {UserRegistrationRequest} body JSON body describing benefit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invokePlanPickup(rallyId: string, body: string, options: any = {}): RequestArgs {
+        invokePlanPickup(rallyId: string, body: UserRegistrationRequest, options: any = {}): RequestArgs {
             // verify required parameter 'rallyId' is not null or undefined
             if (rallyId === null || rallyId === undefined) {
                 throw new RequiredError('rallyId','Required parameter rallyId was null or undefined when calling invokePlanPickup.');
@@ -381,11 +418,11 @@ export const BenefitApiFp = function(configuration?: Configuration) {
          * 
          * @summary Register user for a medical plan
          * @param {string} rallyId 
-         * @param {string} body JSON body describing benefit
+         * @param {UserRegistrationRequest} body JSON body describing benefit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invokePlanPickup(rallyId: string, body: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object> {
+        invokePlanPickup(rallyId: string, body: UserRegistrationRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object> {
             const localVarAxiosArgs = BenefitApiAxiosParamCreator(configuration).invokePlanPickup(rallyId, body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -425,11 +462,11 @@ export const BenefitApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Register user for a medical plan
          * @param {string} rallyId 
-         * @param {string} body JSON body describing benefit
+         * @param {UserRegistrationRequest} body JSON body describing benefit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invokePlanPickup(rallyId: string, body: string, options?: any): AxiosPromise<object> {
+        invokePlanPickup(rallyId: string, body: UserRegistrationRequest, options?: any): AxiosPromise<object> {
             return BenefitApiFp(configuration).invokePlanPickup(rallyId, body, options)(axios, basePath);
         },
     };
@@ -465,12 +502,12 @@ export interface BenefitApiInterface {
      * 
      * @summary Register user for a medical plan
      * @param {string} rallyId 
-     * @param {string} body JSON body describing benefit
+     * @param {UserRegistrationRequest} body JSON body describing benefit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BenefitApiInterface
      */
-    invokePlanPickup(rallyId: string, body: string, options?: any): AxiosPromise<object>;
+    invokePlanPickup(rallyId: string, body: UserRegistrationRequest, options?: any): AxiosPromise<object>;
 
 }
 
@@ -509,12 +546,12 @@ export class BenefitApi extends BaseAPI implements BenefitApiInterface {
      * 
      * @summary Register user for a medical plan
      * @param {string} rallyId 
-     * @param {string} body JSON body describing benefit
+     * @param {UserRegistrationRequest} body JSON body describing benefit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BenefitApi
      */
-    public invokePlanPickup(rallyId: string, body: string, options?: any) {
+    public invokePlanPickup(rallyId: string, body: UserRegistrationRequest, options?: any) {
         return BenefitApiFp(this.configuration).invokePlanPickup(rallyId, body, options)(this.axios, this.basePath);
     }
 

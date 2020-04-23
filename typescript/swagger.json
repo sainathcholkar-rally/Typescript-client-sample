@@ -63,7 +63,7 @@
           "description" : "JSON body describing benefit",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/definitions/UserRegistrationRequest"
           }
         } ],
         "responses" : {
@@ -233,6 +233,27 @@
           "type" : "string"
         },
         "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UserRegistrationRequest" : {
+      "type" : "object",
+      "required" : [ "internalPlanId" ],
+      "properties" : {
+        "internalPlanId" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "dob" : {
+          "type" : "string"
+        },
+        "memberId" : {
           "type" : "string"
         }
       }

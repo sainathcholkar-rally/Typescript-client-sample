@@ -54,7 +54,7 @@ class BenefitController @Inject()(cc: ControllerComponents) extends AbstractCont
         value = "JSON body describing benefit",
         paramType = "body",
         defaultValue = "",
-        dataType = "com.rallyhealth.starship.usermanager.benefitsprograms.model.skr.UserRegistrationRequest"
+        dataType = "model.UserRegistrationRequest"
       )
     )
   )
